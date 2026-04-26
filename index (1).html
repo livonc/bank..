@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Terminal Bank</title>
+    <style>
+      
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+        /* Base Styles */
+        body {
+            background-color: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+
+        }
+
+        .container {
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 0 15px #00ff00;
+            background-color: #0a0a0a;
+        }
+
+        h2 {
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        input, select {
+            width: 100%;
+            border-radius: 10px;
+            background: #000;
+            border: 1px solid #00ff00;
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus {
+            box-shadow: 0 0 5px #00ff00;
+        }
+
+        button {
+            width: 100%;
+            border-radius: 5px;
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #008800;
+            color: #fff;
+        }
+
+        .toggle-link {
+            text-decoration: none;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .dashboard-info {
+            border-top: 1px dashed #00ff00;
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        .balance {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN SECTION -->
+    <div id="login-box" class="container">
+        <h2>BANK LOGIN</h2>
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" placeholder="ENTER USERNAME">
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" placeholder="PASSWORD">
+        </div>
+        <button onclick="showDashboard()">INITIALIZE LOGIN</button>
+        <p class="toggle-link" onclick="toggleForm('signup-box')">New User? Create Account</p>
+    </div>
+
+    <!-- SIGNUP SECTION -->
+    <div id="signup-box" class="container hidden">
+        <h2>OPEN ACCOUNT</h2>
+        <div class="input-group">
+            <label>Select Your Bank</label>
+            <select>
+                <option>CHASE BANK</option>
+                <option>BANK OF AMERICA</option>
+                <option>WELLS FARGO</option>
+                <option>CITIGROUP</option>
+                <option>GOLDMAN SACHS</option>
+                <option>MORGAN STANLEY</option>
+                <option>HSBC</option>
+                <option>BARCLAYS</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="NAME">
+        </div>
+        <div class="input-group">
+            <label>Set Withdrawal PIN (4 Digits)</label>
+            <input type="password" maxlength="4" placeholder="0000">
+        </div>
+        <button onclick="toggleForm('login-box')">REGISTER DATA</button>
+        <p class="toggle-link" onclick="toggleForm('login-box')">Back to Login</p>
+    </div>
+
+    <!-- DASHBOARD SECTION -->
+    <div id="dashboard-box" class="container hidden">
+        <h2>ACCOUNT OVERVIEW</h2>
+        <div class="balance">
+            $ 1,250,000.00
+        </div>
+        <div class="dashboard-info">
+            <label>Withdrawal Amount (USD)</label>
+            <input type="number" placeholder="0.00">
+            <br><br>
+            <label>Enter PIN to Confirm</label>
+            <input type="password" maxlength="4" placeholder="****">
+        </div>
+        <br>
+        <button onclick="alert('TRANSACTION PROCESSING...')">EXECUTE WITHDRAWAL</button>
+        <p class="toggle-link" onclick="location.reload()">TERMINATE SESSION</p>
+    </div>
+
+    <script>
+        function toggleForm(formId) {
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('signup-box').classList.add('hidden');
+            document.getElementById('dashboard-box').classList.add('hidden');
+            
+            document.getElementById(formId).classList.remove('hidden');
+        }
+
+        function showDashboard() {
+            toggleForm('dashboard-box');
+        }
+    </script>
+</body>
+</html>
